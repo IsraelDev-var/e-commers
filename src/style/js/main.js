@@ -42,14 +42,21 @@ function printProducts(db){
 
 
 function showCart(){
-    const bxCartHTML = document.querySelector(".bx-cart")
-    const cartHTML = document.querySelector(".cart")
+    const bxCartHTML = document.querySelector(".bx-cart");
+    const cartHTML = document.querySelector(".cart");
     let count = 0;
     bxCartHTML.addEventListener("click", function(){
         cartHTML.classList.toggle("cart__show");
     })
 }
 
+function showHeader(){
+    window.addEventListener("scroll", function(){
+        const headerHTML = this.document.querySelector(".header");
+        headerHTML.classList.toggle("header__show", this.window.scrollY > 0 )
+    } )
+    
+}
 function lookingCArd(db){
 
 }
@@ -64,6 +71,7 @@ async function main(){
     lookingCArd(db)
     printProducts(db);
     showCart();
+    showHeader()
 
 
 

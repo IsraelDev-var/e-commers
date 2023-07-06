@@ -1,5 +1,6 @@
 :root{
     --hieght-header: 50px;
+    --button-color: hsl(0, 0%, 17%);
 }
 
 
@@ -15,15 +16,28 @@
 header{
     height: var(--hieght-header);
     
-
+    
     position: fixed;
     width: 100%;
     left: 0;
-    top: 0;
-
+    top: -0%;
+    
     display: flex;
+    transition: 0.3s;
 }
+.header__show{
+    position: fixed;
+    top:0;
 
+    height: var(--hieght-header);
+    width: 100%;
+    left: 0;
+}
+h1{
+    font-weight: 600;
+    letter-spacing: 0.2rem;
+    cursor: pointer;
+}
 
 header > nav{
     max-width: 1024px;
@@ -32,15 +46,45 @@ header > nav{
     margin: 0 auto;
     padding: 0 1rem;
 
+    
+
     display: flex;
-    justify-content: flex-end;
     align-items: center;
+    justify-content: space-between;
+    
 }
 
 header > nav > i{
-    font-size: 1.5rem;
     cursor: pointer;
+    font-size: 2rem;
+    
+    position: relative;
+    transition: 0.7s;
 }
+
+ul{
+
+    display: flex;
+    text-decoration: none;
+    gap: 1rem;
+
+}
+a{
+    text-decoration: none;
+    color: #cccfcc;
+    font-size: 20px;
+    letter-spacing: 0.2rem;
+}
+a:hover{
+    color: lightblue;
+
+}
+
+/* .cart__bx{
+    background-color: black;
+    width: 10px;
+} */
+
 
 body{
     padding: 1rem;
@@ -49,6 +93,14 @@ body{
 img{
     width: 100%;
     display: block;
+}
+
+.principal__product{
+    background-color: aqua;
+    max-width: 1024px;
+    left: 0;
+    margin: 0 auto;
+    height: 600px;
 }
 .buttons{
     max-width: 1024px;
@@ -70,11 +122,26 @@ img{
 	flex-grow: 1;
 	padding: 10px 20px;
 	cursor: pointer;
+    background-color: #ffffff;
+    outline: none;
+    border: none;
+    text-align: center;
 
-    
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 1rem;
+    font-size: 1rem;
 
-    
+    transition: background-color 0.5s;
 }
+.btn:hover{
+    background-color:var(--button-color);
+    color: #ffffff;
+}
+.btn:focus{
+    background-color:var(--button-color);
+    color: #ffffff;
+}
+
 
 /* ----------------------------------------products-------------------------------- */
 
