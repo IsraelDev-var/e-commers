@@ -4,12 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-commer</title>
-    <link rel="stylesheet" href="/estilos/style.css">
+    <link rel="stylesheet" href="src/style/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mixitup/3.3.1/mixitup.min.js"
+        integrity="sha512-nKZDK+ztK6Ug+2B6DZx+QtgeyAmo9YThZob8O3xgjqhw2IVQdAITFasl/jqbyDwclMkLXFOZRiytnUrXk/PM6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <script src="js/main.js" defer></script>
+    <script src="src/style/js/main.js" defer></script>
     
 </head>
 <body>
+    <header>
+        <nav>
+            <i class='bx bx-cart'></i>
+        </nav>
+        
+    </header>
+
+    <div class="principal__product"></div>
+
+    
+    <div class="buttons">
+        <button class="btn" id="all" data-filter="all">all</button>
+        <button class="btn" id="shirt" data-filter=".shirt">shirt</button>
+        <button class="btn" id="hoddie" data-filter=".hoddie">hoddie</button>
+        <button class="btn" id="sweater" data-filter=".sweater">sweater</button>
+    </div>
+
     <div class="products"></div>
+
+
+    <div class="cart">
+        <div class="cart__products"></div>
+        <div class="cart__total"></div>
+    </div>
+
+
 </body>
 </html>
