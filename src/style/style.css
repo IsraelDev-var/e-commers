@@ -1,6 +1,8 @@
 :root{
     --hieght-header: 50px;
     --button-color: hsl(0, 0%, 17%);
+    --color-white:#ffffff;
+    --shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
 }
 
 
@@ -13,52 +15,63 @@
 }
 
 /* -------------------------------------head-------------------------------------------*/
+
+
 header{
     height: var(--hieght-header);
-    
-    
     position: fixed;
-    width: 100%;
     left: 0;
-    top: -0%;
+    top: 0;
+    height: var(--hieght-header);
+    width: 100%;
     
     display: flex;
-    transition: 0.3s;
+    transition: background-color .5s,height .5s,box-shadow .5s;
+    
 }
 .header__show{
-    position: fixed;
+    
     top:0;
-
+    background-color: #ffffff;
     height: var(--hieght-header);
     width: 100%;
     left: 0;
+    box-shadow: var(--shadow);
 }
-h1{
+
+h2{
     font-weight: 600;
     letter-spacing: 0.2rem;
     cursor: pointer;
 }
 
 header > nav{
-    max-width: 1024px;
-    width: 100%;
-    background-color: #ffffff;
     margin: 0 auto;
     padding: 0 1rem;
-
+    width: 1024px;
     
 
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     
+
 }
 
-header > nav > i{
+
+.bx-cart{
     cursor: pointer;
     font-size: 2rem;
     
-    position: relative;
+    transition: 0.7s;
+}
+
+.bx-x{
+    display: flex;
+    align-self: flex-end;
+    cursor: pointer;
+    font-size: 2rem;
+    
     transition: 0.7s;
 }
 
@@ -67,9 +80,12 @@ ul{
     display: flex;
     text-decoration: none;
     gap: 1rem;
+    position: relative;
 
 }
-a{
+header .nav ul a{
+    position: relative;
+
     text-decoration: none;
     color: #cccfcc;
     font-size: 20px;
@@ -79,6 +95,31 @@ a:hover{
     color: lightblue;
 
 }
+.btn-menu{
+    font-size: 2rem;
+
+}
+
+.menu{
+    background-color: red;
+    height:100vh;
+    width: 100%;
+    
+    position: fixed;
+    top: calc(50px - var(--hieght-header));
+    right: -100%;
+    padding: 1rem;
+
+    display: flex;
+    flex-direction: column;
+
+    transition: right 0.5s;
+}
+
+
+.menu__show{
+    right:0;
+} 
 
 /* .cart__bx{
     background-color: black;
@@ -148,7 +189,7 @@ img{
 .products{
     padding-top: 3rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) ;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) ;
     max-width: 1024px;
     margin: 0 auto;
     gap: 1rem;
@@ -204,7 +245,7 @@ img{
     width: 400px;
     background-color: #ffffff;
     position: fixed;
-    top: var(--hieght-header);
+    top: calc(50px - var(--hieght-header));
     right: -100%;
     padding: 1rem;
 

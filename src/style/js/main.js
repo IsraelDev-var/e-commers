@@ -44,20 +44,63 @@ function printProducts(db){
 function showCart(){
     const bxCartHTML = document.querySelector(".bx-cart");
     const cartHTML = document.querySelector(".cart");
-    let count = 0;
+    
     bxCartHTML.addEventListener("click", function(){
         cartHTML.classList.toggle("cart__show");
     })
 }
+function exitCart(){
+    const bxCartExitHTML = document.querySelector(".bx-x__cart");
+    const cartHTML = document.querySelector(".cart");
+
+    bxCartExitHTML.addEventListener("click", function(){
+        cartHTML.classList.toggle("cart__show");
+    })
+
+}
 
 function showHeader(){
     window.addEventListener("scroll", function(){
-        const headerHTML = this.document.querySelector(".header");
-        headerHTML.classList.toggle("header__show", this.window.scrollY > 0 )
+        const headerHTML = document.querySelector(".header");
+        headerHTML.classList.toggle("header__show", window.scrollY > 0 )
     } )
     
 }
+
+function showMenu(){
+    const bxMenuHTML = document.querySelector(".btn-menu");
+    const menuHTML = document.querySelector(".menu");
+
+    bxMenuHTML.addEventListener("click", () => {
+        menuHTML.classList.toggle("menu__show")
+    })
+    
+
+    
+}
+
+function exitMenu(){
+    const bxMenuExitHTML = document.querySelector(".bx-x");
+    const menuHTML = document.querySelector(".menu");
+
+    bxMenuExitHTML.addEventListener("click", () =>{
+        menuHTML.classList.toggle("menu__show")
+    })
+
+}
+
+function exitCart(){
+    const bxCartExitHTML = document.querySelector(".bx-x__cart");
+    const cartHTML = document.querySelector(".cart");
+
+    bxCartExitHTML.addEventListener("click", function(){
+        cartHTML.classList.toggle("cart__show");
+    })
+
+}
+
 function lookingCArd(db){
+    const productsHTML = document.querySelector(".products")
 
 }
 
@@ -67,11 +110,18 @@ async function main(){
         JSON.parse(window.localStorage.getItem("products")) || await getProducts(),
         cart:{},
     }
-    
+    showMenu()
     lookingCArd(db)
     printProducts(db);
     showCart();
     showHeader()
+    exitCart()
+    exitMenu()
+    
+
+
+    
+
 
 
 
