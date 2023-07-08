@@ -188,8 +188,8 @@ img{
 
 .principal__product{
     max-width: 1024px;
-    height: 900px;
-    display: block;
+    height: 100%;
+    
     display: grid;
 
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) ;
@@ -242,23 +242,25 @@ img{
     transform:scale(1);
 }
 .buttons{
+
     max-width: 1024px;
     margin: 0 auto;
-    top: 0;
-	padding: 6rem;
+	padding: 4rem;
 	display: flex;
 	justify-content: center;
 	gap: 1rem;
-	flex-wrap: wrap;
-    bottom:0;
+    
+    flex-grow: 1px;
+	
+    
 }
 
 
 .btn{
 
 
-    flex-basis: 100px;
-	flex-grow: 1;
+    
+	
 	padding: 10px 20px;
 	cursor: pointer;
     background-color: var(--primario-100);
