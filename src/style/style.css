@@ -56,6 +56,8 @@ header > nav{
     align-items: center;
     
 
+
+
 }
 
 
@@ -242,11 +244,11 @@ img{
 
 .cart{
     height: calc(100vh - 50px);
-    width: 400px;
+    width: 300px;
     background-color: #ffffff;
     position: fixed;
     top: calc(50px - var(--hieght-header));
-    right: -100%;
+    right: -200%;
     padding: 1rem;
 
     display: flex;
