@@ -188,15 +188,11 @@ img{
 
 .principal__product{
     max-width: 1024px;
-    display:grid;
-    margin: 0 auto;
     height: 900px;
-
-
-    
+    display: block;
     display: grid;
+
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) ;
-    
     margin: 0 auto;
     
 }
@@ -248,8 +244,8 @@ img{
 .buttons{
     max-width: 1024px;
     margin: 0 auto;
-    
-	padding: 2rem;
+    top: 0;
+	padding: 6rem;
 	display: flex;
 	justify-content: center;
 	gap: 1rem;
