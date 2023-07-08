@@ -330,7 +330,7 @@ img:hover{
     width: 400px;
     
     position: fixed;
-    right: -100%;
+    right: -200%;
     padding:0;
     margin: 0;
     top: calc(50px - var(--hieght-header));
