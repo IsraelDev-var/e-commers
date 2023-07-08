@@ -28,7 +28,11 @@ function printProducts(db){
             </div>
 
             <div class="product__info">
-                <h4>${name} <span><b>Stock</b>: ${quantity}</span> </h4>
+                <h4>${name}  </h4>
+                <div class="h4Stock">
+                <h4 class= "stock"><span><b>Stock</b>: ${quantity}</span></h4>
+                </div>
+                
                 <h5>
                     $${price}
                     <i class='bx bx-plus id="${id}"'></i>
