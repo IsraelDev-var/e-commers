@@ -193,7 +193,7 @@ function addToCArd(db){
 
 }
 
-function cartValidetion (){
+function cartValidetion (db){
     document.querySelector(".cart__products").addEventListener("click", (e)=> {
         if(e.target.classList.contains("bx")){
             if(e.target.classList.contains("bx-minus")){
