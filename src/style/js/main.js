@@ -20,7 +20,7 @@ function printProducts(db){
 
     let html = ``
 
-    for(const {image,name,price,id,quantity} of db.products){
+    for(const {id,image,name,price,quantity} of db.products){
         html += `
         <div class="product" >
             <div class="products__img">
@@ -35,7 +35,7 @@ function printProducts(db){
                 
                 <h5>
                     $${price}
-                    <i class='bx bx-plus id="${id}"'></i>
+                    <i class='bx bx-plus btn__product' id="${id}"></i>
                 </h5>
             </div>
         </div>
@@ -105,6 +105,28 @@ function exitCart(){
 
 function lookingCArd(db){
     const productsHTML = document.querySelector(".products")
+    productsHTML.addEventListener("click", (e) => {
+    
+        if(e.target.classList.contains("btn__product")){
+            const id = Number(e.target.id);
+            
+            const productFuond = db.products.find( function(product){
+                return product.id === id;
+            })
+            if(db.cart[productFuond.id]){
+                db.cart[productFuond.id].amount++
+            }else{
+                db.cart[productFuond.id] = {
+                    ...productFuond,
+                    amount: 1
+                }
+            }
+            console.log(db.cart)
+        }
+
+
+
+    });
 
 }
 
@@ -122,18 +144,6 @@ async function main(){
     exitCart()
     exitMenu()
     
-
-
-    
-
-
-
-
-
-
-
-
-
 
 
 }

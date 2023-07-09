@@ -1,3 +1,4 @@
+
 :root{
     --hieght-header: 50px;
     --button-color: hsl(0, 0%, 17%);
@@ -68,8 +69,10 @@ header > nav{
     align-items: center;
     
 
-
-
+}
+.bx_mode{
+    font-size: 2rem;
+    cursor: pointer;
 }
 
 
@@ -107,6 +110,7 @@ ul{
 
 .btn-menu{
     font-size: 2rem;
+    cursor: pointer;
 
 }
 
@@ -131,10 +135,7 @@ ul{
     right:0;
 } 
 
-/* .cart__bx{
-    background-color: black;
-    width: 10px;
-} */
+
 
 .nav__mobile{
     
@@ -242,16 +243,14 @@ img{
     transform:scale(1);
 }
 .buttons{
-
+    
     max-width: 1024px;
     margin: 0 auto;
-	padding: 4rem;
+	padding: 3rem 0;
 	display: flex;
 	justify-content: center;
+    flex-wrap: wrap;
 	gap: 1rem;
-    
-    flex-grow: 1px;
-	
     
 }
 
@@ -273,6 +272,9 @@ img{
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 1rem;
     font-size: 1.3rem;
+    flex-grow: 1px;
+    
+    
 
     transition: background-color 0.5s;
 }
