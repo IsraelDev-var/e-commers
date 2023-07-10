@@ -80,12 +80,27 @@ header > nav{
     cursor: pointer;
     font-size: 2rem;
     
-    
+    position: relative;
     transition: 0.7s;
 }
 .bx-x__cart{
     color: var(--primario-300);
     position:absolute;
+}
+.ball{
+    font-size: 0.8rem;
+    background-color: var(--primario-300);
+    padding: 5px;
+    border-radius: 50%;
+    display: inline-block;
+    display: grid;
+    place-items:center;
+    position: absolute;
+    top: 0.8rem;
+    right: 1rem;;
+    
+
+
 }
 
 .bx-x{
@@ -341,10 +356,12 @@ img:hover{
     background-color: var(--primario-300);
     
     height: 20px;
-    width: 90px;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    justify-content: space-between;
+    
     
     padding: 20px 5px;
 
@@ -354,6 +371,7 @@ img:hover{
 }
 .stock{
     color: var(--bg-100);
+
 }
 
 
@@ -363,13 +381,14 @@ img:hover{
     padding: 0.5rem;
     border-radius: 50%;
     color: var(--primario-300);
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     cursor: pointer;
 }
 
 .bx-plus:hover{
     background-color:var(--primario-300);
     color: var(--primario-100);
+    border: 2px solid var(--primario-100);
 }
 .bx-plus:active{
     background-color:var(--primario-100);

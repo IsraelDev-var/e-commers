@@ -30,13 +30,16 @@ function printProducts(db){
             <div class="product__info">
                 <h4>${name}  </h4>
                 <div class="h4Stock">
+
                 <h4 class= "stock"><span><b>Stock</b>: ${quantity}</span></h4>
+                
+
+                    ${quantity 
+                        ?`<i class='bx bx-plus btn__product' id="${id}"></i>`
+                        : "<div></div>"}
                 </div>
                 
-                <h5>
-                    $${price}
-                    <i class='bx bx-plus btn__product' id="${id}"></i>
-                </h5>
+
             </div>
         </div>
         `;
@@ -183,7 +186,8 @@ function addToCArd(db){
             }
 
             localStorage.setItem("cart", JSON.stringify(db.cart));
-            printProductsIncart(db)
+            printProductsIncart(db);
+            tatolPreci(db);
         
         }
 
@@ -193,7 +197,7 @@ function addToCArd(db){
 
 }
 
-function cartValidetion (db){
+function cartValidation (db){
     document.querySelector(".cart__products").addEventListener("click", (e)=> {
         if(e.target.classList.contains("bx")){
             if(e.target.classList.contains("bx-minus")){
@@ -235,11 +239,62 @@ function cartValidetion (db){
                 
             }
             localStorage.setItem("cart", JSON.stringify(db.cart));
-            printProductsIncart(db);
-            
-        
-}})
 
+            printProductsIncart(db);
+
+            tatolPreci(db);
+    }})
+
+}
+
+function tatolPreci(db) {
+    let cartTotal = 0;
+    let preciTotal = 0;
+
+    for (const key in db.cart) {
+        const {amount,price} = db.cart[key];
+        cartTotal += amount;
+        preciTotal += amount * price;
+    }
+
+    document.querySelector("#totalProducts").textContent = cartTotal;
+    document.querySelector("#totalPreci").textContent = preciTotal;
+    document.querySelector(".ball").textContent = cartTotal;
+
+}
+function controlTotal(db){
+    document.querySelector(".cart__btn-buy").addEventListener("click",() =>{
+        if(!Object.values(db.cart).length)
+        return alert("SELECCIONA TUS PRODUCTOS ANTES DE COMPRAR");
+
+        const anwer = confirm("SEGURO QUIERES COMPRAR?");
+        if (!anwer) return;
+
+        const arry = [];
+
+        db.products.forEach(product =>{
+            if ( db.cart[product.id]){
+                arry.push({
+                    ...product,
+                    quantity: product.quantity - db.cart[product.id].amount,
+                });
+            }else{
+                arry.push(product);
+            }
+        });
+
+        db.products = arry;
+        db.cart = {};
+
+        localStorage.setItem("products", JSON.stringify(db.products));
+        localStorage.setItem("cart", JSON.stringify(db.cart));
+
+        printProducts(db);
+        printProductsIncart(db);
+        tatolPreci(db);
+
+
+    })
 }
 
 async function main(){
@@ -257,7 +312,13 @@ async function main(){
     exitCart();
     exitMenu();
     printProductsIncart(db);
-    cartValidetion (db);
+
+    cartValidation(db);
+
+    tatolPreci(db);
+    controlTotal(db);
+
+
 
 
 }

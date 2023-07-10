@@ -19,7 +19,10 @@
             
             <div class="cart__bx">
                 <i class='bx bxs-moon bx_mode' ></i>
-                <i class='bx bx-cart bx-tada-hover'></i>
+                <i class='bx bx-cart bx-tada-hover'>
+                    <span class="ball"></span>
+                </i>
+
                 <i class='bx bx-menu btn-menu bx-tada-hover'></i>
             </div>
         </nav>
@@ -74,17 +77,18 @@
         </div>
             <div class="cart__total">
                 <div class="cart__total--buy">
-                    <div class="tP-pI">
-                        <p class="pI numberItems">0 items</p>
-                        <p class="tP totalPreci">$0.00</p>
+
+                    <div class="tP-pI cart__total__info">
+                        <p class="pI numberItems"><span id="totalProducts">0</span> items</p>
+                        <p class="tP totalPreci">Total $<span id="totalPreci">0</span></p>
                     </div>
 
-                <div class="cart__btn-buy">
-                    <button type="button" class="btn-buy">Buy</button>
-                </div>
+                    <div class="cart__btn-buy">
+                        <button type="button" class="btn-buy">Buy</button>
+                    </div>
                 
-        </div>
-        </div>
+                </div>
+            </div>
 
     </div>
 
