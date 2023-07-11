@@ -22,15 +22,17 @@ window.addEventListener("load", () => {
     
         let html = ``
     
-        for(const {id,image,name,price,quantity} of db.products){
+        for(const {id,image,name,price,quantity,category} of db.products){
             html += `
-            <div class="product" >
+            <div class="product ${category}" >
                 <div class="products__img">
                     <img src="${image}" alt="${name}">
                 </div>
     
                 <div class="product__info">
                     <h4>${name}  </h4>
+                    <span class="category"><br>${category}</br></span>
+                    <h5>$${price}</h5>
                     <div class="h4Stock">
     
                     <h4 class= "stock"><span><b>Stock</b>: ${quantity}</span></h4>
@@ -325,12 +327,39 @@ window.addEventListener("load", () => {
         });
         localStorage.setItem("cart", JSON.stringify(db.cart));
     }
+    // function filterClouthes(db){
+    //     const buttonHTML = document.querySelectorAll(".buttons .btn")
+    //     buttonHTML.forEach( (button) => {
+    //         button.addEventListener("click", (e) => {
+    //                 const filter = e.target.id;
+    //                 console.log(filter)
+                
+
+                    
+                    
+                    
+
+
+                    
+                    
+                    
+                    
+                    
+
+    //             }
+                    
+
+
+    //         )
+    //     })
+    // }
     
     async function main(){
         const db = {
             products: 
             JSON.parse(window.localStorage.getItem("products")) || await getProducts(),
             cart:JSON.parse(window.localStorage.getItem("cart")) || {},
+            filterDB:await getProducts(),
         }
     
         showMenu()
@@ -348,11 +377,18 @@ window.addEventListener("load", () => {
         controlTotal(db);
         darkShow(db);
 
-    
-    
-    
-    
-    
+        // filterClouthes(db)
+        mixitup(".products", {
+            selectors: {
+                target: '.product'
+            },
+            animation: {
+                duration: 200
+            }
+        });
+
+
+
     }
     
     main();

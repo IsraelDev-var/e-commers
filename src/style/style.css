@@ -492,12 +492,13 @@ img:hover{
 
 }
 .cart__product{
-    padding: 1rem;
+    padding: 0rem;
     background-color: var(--bg-200);
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 1rem;
     border-radius: 1rem;
+    padding-top: 0.5rem;
     
 }
 
@@ -507,6 +508,7 @@ img:hover{
     background-color:var(--bg-100);
     height: 20%;
     display: flex;
+    border-top: 1px solid var(--primario-200);
     
 }
 
@@ -518,7 +520,7 @@ img:hover{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 40px  ;
+    margin:  40px ;
     
 
 
@@ -533,6 +535,7 @@ img:hover{
     font-size: small;
     color: var(--texto-200);
     margin: 0;
+    
     
     
 }
@@ -557,6 +560,7 @@ img:hover{
 
 .btn-buy:hover{
     background-color: var(--primario-300);
+    color: var(--primario-200);
     
 }
 
