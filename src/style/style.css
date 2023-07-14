@@ -460,7 +460,7 @@ img:hover{
 
 
 .cart{
-    height:calc(100vh - 50px);
+    height:calc(100vh );
     width: 400px;
     
     position: fixed;
@@ -617,3 +617,27 @@ img:hover{
     
 
 }
+
+.modal{
+    width: 100%;
+    height: 100vh;
+    background-color: #35353550;
+    /* position: fixed; */
+    top: -100;
+    left: 0;
+}
+.show__modal{
+    top: 0;
+}
+
+
+.footer{
+    display: flex;
+    height: 300px;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-direction: column;
+}
+
+
