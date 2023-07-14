@@ -461,7 +461,7 @@ img:hover{
 
 .cart{
     height:calc(100vh );
-    width: 400px;
+    width: 300px;
     
     position: fixed;
     right: -200%;
@@ -514,13 +514,13 @@ img:hover{
 
 .cart__total--buy{
     
-    width: 100%;
+    width:100%;
     
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin:  40px ;
+    margin: 5px ;
     
 
 
@@ -547,8 +547,8 @@ img:hover{
 .btn-buy{
     
     padding: 10px;
-    margin-bottom: 20px;
-    width: 300px;
+    
+    width: 200px;
 
     border: none;
     background-color: var(--primario-200);
