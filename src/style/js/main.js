@@ -30,9 +30,6 @@ window.addEventListener("load", () => {
                 </div>
 
                 <div class="product__info">
-                <button cl>info</button>
-
-
                     <h4 class="btn__modal" id="${id}" >${name}  </h4>
 
                     <span class="category"><br>${category}</br></span>
@@ -121,6 +118,7 @@ window.addEventListener("load", () => {
             const {amount,name,image,price,id,quantity} = db.cart[key];
             html += `
             <div class="cart__product">
+            
                 <div class="cart__product__img">
                     <img src="${image}" alt=""/>
                 </div>
@@ -176,6 +174,7 @@ window.addEventListener("load", () => {
                 const productFuond = db.products.find( function(product){
                     return product.id === id;
                 })
+                
 
 
                 if(db.cart[productFuond.id]){
@@ -337,106 +336,108 @@ window.addEventListener("load", () => {
         
     }
 
-    function modalAdd(db){
-        const bodyHTML = document.querySelector(".modal");
-        const btnModal = document.querySelector(".btn__modal");
-    
-        btnModal.addEventListener("click", ()=> {
-            bodyHTML.classList.toggle("show__modal")
-            
-        });
-        const productHTML = document.querySelector(".products");
-
-        productHTML.addEventListener("click", (e)=>{
+function addcartFromModal(db){
+    const productsHTML = document.querySelector(".modal")
+    productsHTML.addEventListener("click", (e) => {
 
 
-            if(e.target.classList.contains("btn__modal")){
-                let id = Number(e.target.id)
-                console.log(id);
-                const productFuond = db.products.find( function(product){
-                    return product.id === id;
-                });
+        if(e.target.classList.contains("btn__plus--modal")){
+            const id = Number(e.target.id);
+
+            const productFuond = db.products.find( function(product){
+                return product.id === id;
+            })
+            console.log(productFuond);
 
 
-                
-                if(db.cart[productFuond.id]){
-                    if( db.cart[id].amount === db.cart[id].quantity){
+            if(db.cart[productFuond.id]){
+                if( db.cart[id].amount === db.cart[id].quantity){
 
-                        alert(" ARTICULO AGOTADOS");
-                    }else{
-                        db.cart[id].amount++;
-
-                    }
+                    alert(" ARTICULO AGOTADOS");
                 }else{
-                    db.cart[productFuond.id] = {
-                        ...productFuond,
-                        amount: 1
-                    }
-                }
+                    db.cart[id].amount++;
 
-                localStorage.setItem("cart", JSON.stringify(db.cart));
-                printProductsIncart(db);
-                tatolPreci(db);
-                printModal(db)
-                localStorage.setItem("modal", JSON.stringify(db.modal))
+                }
+            }else{
+                db.cart[productFuond.id] = {
+                    ...productFuond,
+                    amount: 1
+                }
             }
 
+            localStorage.setItem("cart", JSON.stringify(db.cart));
+            printProductsIncart(db);
+            tatolPreci(db);
+
+        }
 
 
-        })
+
+    });
+
 }
 
-function printModal(db){
-    let html = ``;
+function openModal(db) {
+	const productHTML = document.querySelector(".products");
 
-    for (const key in db.modal) {
-        const {name,image,price,id,quantity,category} = db.modal[key];
-        html += `
+	productHTML.addEventListener("click", (e) => {
+		if (e.target.classList.contains("btn__modal")) {
+			document.querySelector(".modal").classList.add("show__modal");
 
-            <div class="product ${category}" >
-                <div class="products__img">
-                    <img src="${image}" alt="${name}">
+			let id = Number(e.target.id);
+
+			const product = db.products.find(function (product) {
+				return product.id === id;
+			});
+
+			document.querySelector(".modal").innerHTML = `
+            
+            <div class="product__modal " >
+            
+                <div  class="img_modal">
+                    <img src="${product.image}" alt="sd">
                 </div>
 
-                <div class="product__info">
-                <button cl>info</button>
+            <div class="modal__info">
+                <h4  >${product.name}  </h4>
 
+                <span class="category__modal"><br>${product.category}</br></span>
+                <h5>$${product.price}</h5>
+                <div class="h4Stock__modal">
 
-                    <h4 class="btn__modal" id="${id}" >${name}  </h4>
-
-                    <span class="category"><br>${category}</br></span>
-                    <h5>$${price}</h5>
-                    <div class="h4Stock">
-
-                    <h4 class= "stock"><span><b>Stock</b>: ${quantity}</span></h4>
-
-
-                        ${quantity
-                            ?`<i class='bx bx-plus btn__product' id="${id}"></i>`
-                            : "<div></div>"}
-                    </div>
-
-
+                <h4 class= "stock__modal"><span><b>Stock</b>: ${product.quantity}</span></h4>
+                    ${product.quantity
+                        ?`<div class="cart__btn-buy">
+                                <button class="btn__plus--modal btn-buy" id="${product.id}">Buy</button>
+                            </div>`
+                        : "<div></div>"}
                 </div>
             </div>
-            `;
-    }
-    document.querySelector(".container__modal").innerHTML = html;
+        </div>`;
+		}
+	});
 
 
 }
+function closetModal(){
+    const elimineMOdal = document.querySelector(".modal");
+    const modalHTML = document.querySelector(".modal")
 
+    elimineMOdal.addEventListener("click", () => {
+        modalHTML.classList.remove("show__modal")
+    })
+}
 
-
-// function closetModal(){
-//     const modalHTML =  document.querySelector(".modal");
-//     const btnModal =  document.querySelector(".bx-x__modal");
-
-//     btnModal.addEventListener("click", () => {
-//         modalHTML.classList.toggle("show__modal")
-//     });
-
-// }
+function filter(){
+    mixitup(".products", {
+        selectors: {
+            target: '.product'
+        },
+        animation: {
+            duration: 200
+        }
+    });
+}
 
     async function main(){
         const db = {
@@ -458,18 +459,16 @@ function printModal(db){
 
         cartValidation(db);
 
+        filter()
         tatolPreci(db);
         controlTotal(db);
         darkShow(db);
-        modalAdd(db);
-        printModal(db);
-
-        // actictModal();
+        openModal(db);
+        addcartFromModal(db);
 
 
-        // closetModal();
-
-        // filterClouthes(db)
+        closetModal();
+        
         mixitup(".products", {
             selectors: {
                 target: '.product'
