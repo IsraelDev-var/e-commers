@@ -637,13 +637,33 @@ img:hover{
 .product__modal{
     width: 300px;
     border-radius: 1rem;
+    
     background-color: var(--primario-200);
 }
 .img_modal{
     background-color: var(--bg-300);
     border-radius:1rem ;
+    
 }
 
+.cart__btn-buy{
+    display: flex;
+
+
+}
+
+.btn__plus--modal{
+    
+    padding: 10px;
+    background-color: var(--primario-300);
+    color: var(--primario-100);
+    
+}
+
+.btn__plus--modal:hover{
+    background-color: #8FBF9F;
+    color: var(--primario-300);
+}
 
 .footer{
     display: flex;
@@ -652,20 +672,6 @@ img:hover{
     align-items: center;
     gap: 1rem;
     flex-direction: column;
-}
-
-.bx-x__modal{
-    font-size: 1rem;
-    color:white;
-}
-
-.btn__plus--modal{
-    
-    padding: 10px;
-    background-color: red;
-    display: flex;
-    text-align: center;
-    
 }
 
 
